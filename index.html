@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./src/assets/images/favicon.ico">
+    <title>Service Worker Example</title>
+    <link rel="stylesheet" href="./src/assets/styles/style.css">
+</head>
+
+<body>
+    <h1 class="h1">Hello, Service Worker!</h1>
+    <img class="flour" src="./src/assets/images/flour.jpg" alt="flour">
+    <script src="./src/main.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./src/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration);
+                        registration.update(); // 通知 Service Worker 进行更新
+                    })
+                    .catch(error => {
+                        console.error('Service Worker registration failed:', error);
+                    });
+
+                /* navigator.serviceWorker.addEventListener('message', event => {
+                    if (event.data === 'reload') {
+                        alert('主动刷新')
+                        window.location.reload(true); // 执行页面强制刷新
+                    }
+                }); */
+
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+.h1 {
+    color: yellowgreen;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.flour {
+    display: inline-block;
+    width: 700px;
+    height: 500px;
+}
